@@ -1,0 +1,18 @@
+# Minimal requirements for basic functionality
+numpy
+opencv-python
+matplotlib
+scipy
+pillow
+keyboard
+
+# Optional for face recognition (may need manual installation)
+# face-recognition
+# dlib
+
+# Optional for virtual camera (may need manual installation)
+# pyvirtualcam
+
+# Optional for performance (may need manual installation)  
+# moviepy
+# numba
