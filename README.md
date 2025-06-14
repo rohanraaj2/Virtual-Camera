@@ -4,32 +4,9 @@ A real-time video processing application that captures video from a physical cam
 
 ## 🎯 Project Overview
 
-This project implements a comprehensive set of image processing operations as required for the Computer Vision course at Technische Hochschule Ingolstadt (SS2025). The application demonstrates real-time video processing capabilities with statistical analysis, transformations, and various filtering techniques.
+This project implements a comprehensive set of image processing operations. The application demonstrates real-time video processing capabilities with statistical analysis, transformations, and various filtering techniques.
 
-## 📋 Features
-
-### Must-Have Basic Image Operations ✅
-
-#### Statistical Analysis
-- **Mean**: Average pixel intensity per RGB channel
-- **Mode**: Most frequent pixel value per RGB channel
-- **Standard Deviation**: Measure of pixel intensity spread
-- **Maximum/Minimum**: Range of pixel values per channel
-
-#### Transformations & Filters
-- **Linear Transformation**: Contrast and brightness adjustment (α * pixel + β)
-- **Entropy Calculation**: Information content measure for each RGB channel
-- **Histogram Operations**: 
-  - RGB histogram plotting with all channels overlaid
-  - Histogram equalization for contrast enhancement
-- **Filtering Options**:
-  - **Edge Detection**: Canny edge detection algorithm
-  - **Gaussian Blur**: Smoothing filter with adjustable kernel size
-  - **Sharpen Filter**: Convolution-based sharpening
-  - **Sobel Filter**: Gradient-based edge detection
-  - **Gabor Filter**: Texture and edge detection
-
-### Real-time Features
+## 📋 Real-time Features
 - 🎥 Live camera capture (30 FPS)
 - 🔄 Dynamic filter switching (press 'f')
 - 📊 Statistics overlay toggle (press 's')
@@ -47,7 +24,7 @@ This project implements a comprehensive set of image processing operations as re
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/rohanraaj2/Virtual-Camera
    cd Virtual-Camera
    ```
 
@@ -259,48 +236,3 @@ All filters are implemented to maintain RGB format and real-time performance:
 - **Latency**: < 50ms processing delay
 - **Memory Usage**: ~100MB typical
 - **CPU Usage**: 15-25% on modern systems
-
-## 🎓 Educational Value
-
-This project demonstrates:
-- Real-time computer vision processing
-- Statistical image analysis
-- Various filtering techniques
-- Software architecture for CV applications
-- Integration with streaming platforms
-
-## 📝 Project Requirements Compliance
-
-✅ **Statistical Analysis**: Mean, Mode, Std Dev, Min/Max per RGB channel  
-✅ **Linear Transformation**: Contrast and brightness adjustment  
-✅ **Entropy**: Information content calculation  
-✅ **Histogram**: RGB plotting and equalization  
-✅ **Filters**: Edge detection, blur, sharpen, Sobel, Gabor  
-✅ **Real-time Processing**: 30 FPS camera capture and processing  
-✅ **Virtual Camera**: Integration with streaming applications  
-✅ **Code Comments**: Comprehensive documentation throughout  
-
-## 👥 Contributors
-
-- **Team Members**: [Add your team member names here]
-- **Course**: Computer Vision SS2025
-- **Institution**: Technische Hochschule Ingolstadt
-- **Instructor**: Dominik Rößle
-
-## 📄 License
-
-This project is developed for educational purposes as part of the Computer Vision course at Technische Hochschule Ingolstadt.
-
-## 🔮 Future Enhancements
-
-Potential "Something Special" features to implement:
-- Face detection and replacement
-- Object tracking and overlays
-- Real-time background replacement
-- Gesture recognition
-- Color-based object segmentation
-- Neural network integration for advanced features
-
----
-
-**Note**: This implementation covers all required "Must-Have" basic image operations. The next phase will focus on implementing the "Something Special" feature as per project requirements.
