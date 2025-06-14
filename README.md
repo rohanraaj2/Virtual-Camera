@@ -100,24 +100,6 @@ Virtual-Camera/
     └── Jeff Bezoz.jpg      # Test image
 ```
 
-## 🧩 Code Architecture
-
-### Core Classes
-
-#### `ImageProcessor` (image_processing.py)
-Implements all required image processing operations:
-- Statistical analysis methods
-- Linear transformations
-- Entropy calculations
-- Histogram operations
-- Filter implementations
-
-#### `VirtualCamera` (capturing.py)
-Manages camera capture and virtual camera output:
-- `capture_cv_videoInput()` - Initialize camera
-- `virtual_cam_interaction()` - Setup virtual camera
-- `capture_screen()` - Main processing loop
-
 ### Data Flow
 
 ```
