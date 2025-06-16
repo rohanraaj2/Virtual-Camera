@@ -1,220 +1,176 @@
 # Virtual Camera - Computer Vision Project
 
-A real-time video processing application that captures video from a physical camera, applies advanced image processing operations, and outputs the processed video to a virtual camera for use in applications like Zoom, Discord, or OBS Studio.
+A real-time video processing application that captures video from a camera, applies various image processing operations, and outputs the processed video to a virtual camera for use in applications like Zoom, Discord, or OBS Studio.
 
 ## 🎯 Project Overview
 
-This project implements a comprehensive set of image processing operations. The application demonstrates real-time video processing capabilities with statistical analysis, transformations, and various filtering techniques.
+This project was developed as part of a Computer Vision course at Technische Hochschule Ingolstadt. It demonstrates real-time image processing capabilities including statistical analysis, filtering operations, and face recognition.
 
-## 📋 Real-time Features
-- 🎥 Live camera capture (30 FPS)
-- 🔄 Dynamic filter switching (press 'f')
-- 📊 Statistics overlay toggle (press 's')
-- 🖥️ Virtual camera output for streaming apps
-- ⌨️ Interactive keyboard controls
+## ✨ Features
 
-## 🛠️ Installation
+### Core Functionality
+- **Real-time video capture** from physical camera using OpenCV
+- **Virtual camera output** using pyvirtualcam for integration with video conferencing apps
+- **Live histogram visualization** with RGB channel analysis
+- **Interactive controls** for switching between different processing modes
+
+#### Transformations & Filters:
+- **Linear Transformation** - Contrast and brightness adjustment
+- **Histogram Equalization** - Automatic contrast enhancement
+- **Edge Detection** - Sobel filter for edge highlighting
+- **Gaussian Blur** - Smoothing filter
+- **Sharpen Filter** - Detail enhancement
+- **Gabor Filter** - Texture analysis and pattern detection
+
+### Special Feature - Face Recognition
+- **Real-time face detection** using face_recognition library
+- **Face identification** with known faces from image database
+- **Privacy protection** with automatic face blurring for unknown individuals
+- **Visual indicators** with bounding boxes and name labels
+
+## 🚀 Installation & Setup
 
 ### Prerequisites
-- Python 3.8+ (tested with Python 3.13)
-- Webcam or camera device
-- OBS Studio (for virtual camera testing)
+- Python 3.8 or higher
+- OBS Studio (for virtual camera functionality)
+- Compatible webcam
 
-### Setup Instructions
+### Installation Steps
 
-1. **Clone the repository**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/rohanraaj2/Virtual-Camera
+   git clone https://github.com/rohanraaj2/Virtual-Camera.git
    cd Virtual-Camera
    ```
 
-2. **Install dependencies**
+2. **Install required packages:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Install OBS Studio** (for virtual camera support)
-   - Download from: https://obsproject.com
-   - Required for virtual camera functionality
+3. **Setup face recognition (optional):**
+   - Add face images to the `images/` directory
+   - Supported formats: .jpg, .png
+   - Name files as "PersonName.jpg" for automatic recognition
 
-4. **Test installation**
-   ```bash
-   python demo_operations.py
-   ```
+4. **Install OBS Studio:**
+   - Download from [https://obsproject.com](https://obsproject.com)
+   - Install virtual camera plugin if needed
 
-## 📦 Dependencies
+## 🎮 Usage
 
-```text
-opencv-python>=4.5.0
-numpy>=1.21.0
-pyvirtualcam>=0.9.0
-scipy>=1.7.0
-matplotlib>=3.4.0
-scikit-image>=0.18.0
-```
-
-## 🚀 Usage
-
-### Basic Usage
-
-1. **Run the main application**
-   ```bash
-   python run.py
-   ```
-
-2. **Use keyboard controls**
-   - `f` - Cycle through filters (edge → blur → sharpen → sobel → gabor)
-   - `s` - Toggle statistics display overlay
-   - `q` - Quit application
-
-### Testing Individual Operations
+### Running the Application
 
 ```bash
-# Demonstrate all image processing operations
-python demo_operations.py
-
-# Test virtual camera functionality
-python capturing.py
+python run.py
 ```
 
-### Integration with Streaming Apps
+### Interactive Controls
 
-1. Start the virtual camera application
-2. Open OBS Studio or your preferred streaming application
-3. Add "Camera" source and select the virtual camera
-4. The processed video will appear in your streaming application
+| Key | Function |
+|-----|----------|
+| `1` | Original image (no filter) |
+| `2` | Linear transformation |
+| `3` | Histogram equalization |
+| `4` | Edge detection |
+| `5` | Gaussian blur |
+| `6` | Sharpen filter |
+| `7` | Gabor filter |
+| `S` | Toggle statistics display |
+| `Q` | Quit application |
+
+### Virtual Camera Setup
+
+1. Start the application with `python run.py`
+2. Open OBS Studio
+3. Add "Video Capture Device" source
+4. Select "OBS Virtual Camera" as device
+5. The processed video feed will appear in OBS
+6. Use OBS Virtual Camera in your video conferencing application
 
 ## 📁 Project Structure
 
 ```
 Virtual-Camera/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
-├── run.py                   # Main application entry point
-├── capturing.py             # Virtual camera class implementation
-├── image_processing.py      # Core image processing operations
-├── demo_operations.py       # Demonstration script
-├── basics.py               # Basic utility functions
-├── overlays.py             # Overlay and UI elements
-└── images/                 # Sample images
-    └── Jeff Bezoz.jpg      # Test image
+├── basics.py              # Core image processing functions
+├── capturing.py           # Camera capture and virtual camera interface
+├── overlays.py            # Visualization and overlay functions
+├── run.py                 # Main application entry point
+├── requirements.txt       # Python dependencies
+├── README.md             # Project documentation
+├── images/               # Face recognition image database
+│   └── Jeff Bezos.jpg    # Example face image
+└── __pycache__/          # Python cache files
 ```
 
-### Data Flow
+## 🔧 Technical Implementation
 
+### Architecture Overview
 ```
-[Physical Camera] → [Image Processing] → [Virtual Camera] → [Streaming Apps]
-      ↑                     ↑                    ↑
-   OpenCV              Custom Filters        pyvirtualcam
-```
-
-## 📊 Image Processing Pipeline
-
-1. **Capture**: Frame acquisition from physical camera (640x480 @ 30fps)
-2. **Statistical Analysis**: Calculate mean, mode, std dev, min/max for RGB channels
-3. **Linear Transformation**: Apply contrast/brightness adjustment
-4. **Entropy Calculation**: Measure information content per channel
-5. **Histogram Equalization**: Enhance contrast distribution
-6. **Filtering**: Apply selected filter (edge, blur, sharpen, etc.)
-7. **Output**: Send processed frame to virtual camera
-
-## 🎮 Interactive Features
-
-### Real-time Filter Switching
-- **Edge Detection**: Highlights object boundaries and textures
-- **Gaussian Blur**: Creates smooth, artistic effect
-- **Sharpen**: Enhances fine details and clarity
-- **Sobel**: Emphasizes gradients and edges
-- **Gabor**: Detects textures and patterns
-
-### Statistics Overlay
-When enabled (press 's'), displays real-time statistics:
-- RGB channel means and standard deviations
-- Entropy values for each channel
-- Current filter information
-
-## 🔧 Configuration
-
-### Camera Settings
-```python
-# Modify in capturing.py
-self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)   # Width
-self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)  # Height
-self.cap.set(cv2.CAP_PROP_FPS, 30)            # Frame rate
+[Physical Camera] → [OpenCV Capture] → [Image Processing] → [Virtual Camera] → [Output Applications]
 ```
 
-### Filter Parameters
-```python
-# Linear transformation
-alpha = 1.2    # Contrast multiplier
-beta = 30      # Brightness offset
+### Key Components
 
-# Gaussian blur
-kernel_size = 15    # Blur intensity
+- **VirtualCamera Class**: Handles camera input/output and virtual camera interface
+- **Image Processing Pipeline**: Applies statistical analysis and filtering operations
+- **Face Recognition System**: Detects and identifies faces in real-time
+- **Histogram Visualization**: Real-time RGB histogram overlay
+- **Statistics Display**: Live statistical analysis overlay
 
-# Canny edge detection
-low_threshold = 50   # Lower edge threshold
-high_threshold = 150 # Upper edge threshold
-```
+### Performance Optimizations
+- **Numba JIT compilation** for histogram calculations
+- **Efficient face detection** with frame scaling
+- **Optimized matplotlib plotting** for real-time histogram updates
+- **Memory-efficient image processing** with in-place operations
 
-## 🧪 Technical Implementation Details
+## 🎨 Filter Descriptions
 
-### Statistical Analysis
-```python
-# Per-channel statistics calculation
-stats = {
-    'mean': np.mean(channel_data),
-    'mode': stats.mode(channel_data)[0][0],
-    'std': np.std(channel_data),
-    'max': np.max(channel_data),
-    'min': np.min(channel_data)
-}
-```
+### Linear Transformation
+Adjusts contrast (α) and brightness (β): `output = α × input + β`
 
-### Entropy Calculation
-```python
-# Information entropy: -Σ(p * log2(p))
-hist = hist / hist.sum()  # Normalize to probabilities
-entropy = -np.sum(hist * np.log2(hist + 1e-10))  # Avoid log(0)
-```
+### Histogram Equalization
+Enhances contrast by redistributing pixel intensities across the full range.
 
-### Filter Implementation
-All filters are implemented to maintain RGB format and real-time performance:
-- **Canny**: Uses OpenCV's optimized implementation
-- **Sobel**: Combines X and Y gradients
-- **Gabor**: Utilizes scikit-image for texture detection
+### Edge Detection (Sobel)
+Highlights edges using gradient computation in X and Y directions.
 
-## 🐛 Troubleshooting
+### Gaussian Blur
+Applies smoothing using Gaussian kernel convolution.
 
-### Common Issues
+### Sharpen Filter
+Enhances edges and details using high-pass filtering.
 
-1. **Camera not detected**
-   ```bash
-   # Try different camera indices
-   virtual_cam = VirtualCamera(camera_index=1)  # or 2, 3...
-   ```
+### Gabor Filter
+Analyzes texture patterns and oriented features.
 
-2. **Virtual camera not working**
-   - Ensure OBS Studio is installed
-   - Restart application after OBS installation
-   - Check Windows camera permissions
+## 🛠️ Dependencies
 
-3. **Performance issues**
-   - Reduce frame size in camera settings
-   - Lower FPS if needed
-   - Close other camera applications
+- **OpenCV** - Computer vision and image processing
+- **NumPy** - Numerical computing
+- **Matplotlib** - Visualization and plotting
+- **pyvirtualcam** - Virtual camera interface
+- **face_recognition** - Face detection and recognition
+- **scipy** - Scientific computing and statistics
+- **keyboard** - Keyboard input handling
+- **Pillow** - Image processing utilities
+- **numba** - JIT compilation for performance
 
-4. **Import errors**
-   ```bash
-   # Reinstall dependencies
-   pip uninstall opencv-python
-   pip install opencv-python
-   ```
+## 🤝 Contributing
 
-## 📈 Performance Metrics
+This project was developed as part of an academic assignment. Contributions and improvements are welcome for educational purposes.
 
-- **Frame Rate**: 30 FPS (real-time processing)
-- **Resolution**: 640x480 (configurable)
-- **Latency**: < 50ms processing delay
-- **Memory Usage**: ~100MB typical
-- **CPU Usage**: 15-25% on modern systems
+## 📝 License
+
+This project is developed for educational purposes as part of a university course.
+
+## 👥 Authors
+
+Developed by students at Technische Hochschule Ingolstadt under the guidance of Dominik Rößle.
+
+## 🔗 References
+
+- [pyvirtualcam Documentation](https://github.com/letmaik/pyvirtualcam)
+- [OpenCV Documentation](https://docs.opencv.org/)
+- [Face Recognition Library](https://github.com/ageitgey/face_recognition)
+- [OBS Studio](https://obsproject.com)
